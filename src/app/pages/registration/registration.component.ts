@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registration',
@@ -6,5 +8,21 @@ import { Component } from '@angular/core';
   styleUrls: ['./registration.component.scss']
 })
 export class RegistrationComponent {
+  registrationForm = new FormGroup({
+    email: new FormControl(''),
+    name: new FormControl(''),
+    password: new FormControl(''),
+    password_confirmation: new FormControl(''),
+  });
+
+  constructor(
+    private router: Router,
+  ) {
+    
+  }
+
+  register() {
+    
+  }
 
 }

@@ -235,10 +235,25 @@ $altTheme: (
 
 // Handle buttons appropriately, with respect to line-height
 .mat-raised-button, .mat-stroked-button, .mat-flat-button {
+  &:hover {
+    background-color: black;
+  }
+  &:active {
+    background-color: #000000C4;
+  }
   padding: 0 1.15em;
   margin: 0 .65em;
   min-width: 3em;
   line-height: 36.4px
+}
+
+.mat-flat-button {
+  &:hover {
+    background-color: black;
+  }
+  &:active {
+    background-color: #000000C4;
+  }
 }
 
 .mat-standard-chip {

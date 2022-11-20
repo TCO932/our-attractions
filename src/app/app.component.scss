@@ -11,3 +11,31 @@ mat-toolbar {
   height: 100px;
   // background-color: aqua;
 }
+
+.footer {
+  flex: 0 1 auto;
+  background-color:pink;
+  height: 100px;
+  width: 100%;
+}
+
+::ng-deep router-outlet + *{
+  flex: 1 1 auto;
+  min-height: calc(100vh - 201px);
+}
+
+.view-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.menu {
+  // background: url(../assets/birds_1.png) no-repeat; 
+  // background-color: rgba(0, 128, 0, 0.1);
+  // -webkit-background-size: contain;
+  // -moz-background-size: contain;
+  // -o-background-size: contain;
+  // background-size: contain;
+}

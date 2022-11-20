@@ -8,6 +8,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDividerModule} from '@angular/material/divider';
+import { ReactiveFormsModule } from '@angular/forms';
+import {MatInputModule} from '@angular/material/input';
 
 import { MainComponent } from './pages/main/main.component';
 import { SearchComponent } from './pages/search/search.component';
@@ -34,6 +36,8 @@ import { LoginComponent } from './pages/login/login.component';
     MatIconModule,
     MatButtonModule,
     MatDividerModule,
+    ReactiveFormsModule,
+    MatInputModule,
   ],
 
   providers: [],

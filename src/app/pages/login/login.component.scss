@@ -1,0 +1,33 @@
+:host {
+  display: flex;
+  align-items: center;
+  .container {
+    width: 40%;
+    // height: 100px;
+    // background-color: rgb(185, 3, 3);
+    margin: auto;
+  }
+  
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 7px;
+    padding: 16px;
+    mat-form-field {
+    }
+    .logIn-button {
+      width: 150px;
+      margin: 0 auto;
+    }
+  }
+
+  .spacer {
+    height: 60px;
+  }
+
+  .register {
+    width: fit-content;
+    margin: 0 auto;
+  }
+}

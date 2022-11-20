@@ -1,9 +1,14 @@
-<mat-toolbar>
- <h3 class="menu-item" (click)="navigate('/main')">Наши достопримечательности</h3>
- <h3 class="menu-item" (click)="navigate('attraction')">Все достопримечательности</h3>
- <span class="spacer"></span>
-  <button *ngIf="!isLogedIn" mat-stroked-button>Вход</button>
-  <button *ngIf="!isLogedIn" color="primary" mat-fab><mat-icon>person_outline</mat-icon></button>
-</mat-toolbar>
-<mat-divider></mat-divider>
-<router-outlet></router-outlet>
+<div class="view-container">
+  <mat-toolbar class="menu" color="primary">
+    <h3 class="menu-item" (click)="navigate('main')">Наши достопримечательности</h3>
+    <h3 class="menu-item" (click)="navigate('attraction')">Все достопримечательности</h3>
+    <span class="spacer"></span>
+     <button *ngIf="!isLogedIn" mat-stroked-button (click)="navigate('login')">Вход</button>
+     <button *ngIf="isLogedIn" color="primary" mat-fab><mat-icon>person_outline</mat-icon></button>
+   </mat-toolbar>
+   <mat-divider></mat-divider>
+   <router-outlet></router-outlet>
+   <div class="footer">
+   
+   </div>
+</div>

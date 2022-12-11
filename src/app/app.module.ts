@@ -10,6 +10,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatDividerModule} from '@angular/material/divider';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 import { MainComponent } from './pages/main/main.component';
 import { SearchComponent } from './pages/search/search.component';
@@ -17,6 +18,10 @@ import { AttractionComponent } from './pages/attraction/attraction.component';
 import { NewAttractionComponent } from './pages/new-attraction/new-attraction.component';
 import { RegistrationComponent } from './pages/registration/registration.component';
 import { LoginComponent } from './pages/login/login.component';
+import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
+import { AttractionsComponent } from './pages/attractions/attractions.component';
+import { AboutComponent } from './about/about.component';
+import { AddAttractionComponent } from './add-attraction/add-attraction.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +31,10 @@ import { LoginComponent } from './pages/login/login.component';
     AttractionComponent,
     NewAttractionComponent,
     RegistrationComponent,
-    LoginComponent
+    LoginComponent,
+    AttractionsComponent,
+    AboutComponent,
+    AddAttractionComponent
   ],
   imports: [
     BrowserModule,
@@ -38,6 +46,9 @@ import { LoginComponent } from './pages/login/login.component';
     MatDividerModule,
     ReactiveFormsModule,
     MatInputModule,
+    MatCheckboxModule,
+    HttpClientModule,
+    HttpClientXsrfModule
   ],
 
   providers: [],

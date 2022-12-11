@@ -1,8 +1,28 @@
 :host {
   .map {
-    height: 500px;
+    height: calc(100vh - 100px);
     img {
       height: 100%;
+    }
+  }
+
+  .search-container {
+    height: calc(100vh - 100px);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+
+  .button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    .search-button {
+      font-size: 1.5rem;
+      padding: 8px 20px;
+      width: fit-content;
+      border-color: black;
     }
   }
 }

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AttractionComponent } from './pages/attraction/attraction.component';
+import { AttractionsComponent } from './pages/attractions/attractions.component';
 import { LoginComponent } from './pages/login/login.component';
 import { MainComponent } from './pages/main/main.component';
 import { NewAttractionComponent } from './pages/new-attraction/new-attraction.component';
@@ -11,9 +12,9 @@ const routes: Routes = [
   { path: 'main', component: MainComponent },
   { path: 'login', component: LoginComponent },
   { path: 'registration', component: RegistrationComponent },
-  { path: 'attraction', component: AttractionComponent },
+  { path: 'attractions', component: AttractionsComponent },
+  { path: 'attraction/:id', component: AttractionComponent },
   { path: 'new-attraction', component: NewAttractionComponent },
-  { path: 'search', component: SearchComponent },
   { path: '**',   redirectTo: 'main', pathMatch: 'full' },
 ];
 

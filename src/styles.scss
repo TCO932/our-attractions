@@ -81,7 +81,7 @@ $mat-dark-theme-foreground: (
 
 // Background config
 // Light bg
-$light-background:    #fafafa;
+$light-background:    white;
 $light-bg-darker-5:   darken($light-background, 5%);
 $light-bg-darker-10:  darken($light-background, 10%);
 $light-bg-darker-20:  darken($light-background, 20%);
@@ -235,12 +235,6 @@ $altTheme: (
 
 // Handle buttons appropriately, with respect to line-height
 .mat-raised-button, .mat-stroked-button, .mat-flat-button {
-  &:hover {
-    background-color: black;
-  }
-  &:active {
-    background-color: #000000C4;
-  }
   padding: 0 1.15em;
   margin: 0 .65em;
   min-width: 3em;
@@ -248,12 +242,36 @@ $altTheme: (
 }
 
 .mat-flat-button {
-  &:hover {
+  padding: 0 1.15em;
+  margin: 0 .65em;
+  min-width: 3em;
+  line-height: 36.4px
+}
+
+.mdc-button {
+  &:hover:not(.underlined, .icon-btn) {
+    cursor: pointer;
     background-color: black;
+    color: white !important; 
   }
-  &:active {
-    background-color: #000000C4;
+  &:active:not(.underlined, .icon-btn) {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.77);
+    color: white !important;
   }
+  &.underlined:active {
+    text-decoration: underline !important;
+  }
+  &.icon-btn {
+    background-color: white !important;
+    color: black !important;
+    mat-icon {
+      margin: 0;
+    }
+  }
+  background-color: white;
+  color: black;
+  width: fit-content;
 }
 
 .mat-standard-chip {

@@ -1,0 +1,35 @@
+<div class="attractions-container">
+    <div class="search">
+        <div class="bar">
+            <input class="input" type="text" matInput placeholder="Поиск">
+            <button class="icon-btn" color="primary"><mat-icon>search</mat-icon></button>
+            <button class="icon-btn" color="primary"><mat-icon>add</mat-icon></button>
+        </div>
+        <div class="filters">
+            <span>Сортировать:</span>
+            <mat-checkbox class="filter">по названию</mat-checkbox>
+            <mat-checkbox class="filter">по дате добавления</mat-checkbox>
+            <mat-checkbox class="filter">показать только мои</mat-checkbox>
+        </div>
+    </div>
+    <div class="attractions">
+        <div class="item" *ngFor="let item of attractions" [ngStyle]="{background: 'url(../../assets/wall.png)'}">
+            <div class="info">
+                <div class="text">
+                    <span class="name">
+                        {{item.name}}
+                    </span>
+                    <br>
+                    <span class="date">
+                        Дата добавления: {{item.date}}
+                    </span>
+                </div>
+                <button  class="details-button underlined" type="button" mat-stroked-button>Подробнее</button>
+            </div>
+
+        </div>
+        <div class="pagination">    
+
+        </div>
+    </div>
+</div>

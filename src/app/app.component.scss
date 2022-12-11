@@ -14,12 +14,15 @@ mat-toolbar {
 
 .footer {
   flex: 0 1 auto;
-  background-color:pink;
+  background-color:rgb(172, 172, 172);
   height: 100px;
   width: 100%;
 }
 
 ::ng-deep router-outlet + *{
+  // margin: 0 auto;
+  width: 100%;
+  // max-width: 80%;
   flex: 1 1 auto;
   min-height: calc(100vh - 201px);
 }
@@ -31,11 +34,44 @@ mat-toolbar {
   width: 100%;
 }
 
-.menu {
-  // background: url(../assets/birds_1.png) no-repeat; 
-  // background-color: rgba(0, 128, 0, 0.1);
-  // -webkit-background-size: contain;
-  // -moz-background-size: contain;
-  // -o-background-size: contain;
-  // background-size: contain;
+.img {
+  height: 100%;
+  width: 100%;
+  background: url(../assets/birds_1.png) no-repeat;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+
+img {
+  height: 60px;
+  width: 60px;
+  cursor: pointer;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  .footer-container {
+    margin: auto 0;
+    font-size: 1.3rem;
+    display: flex;
+    justify-content: space-around;
+    span.text {
+      display: inline-block;
+      line-height: 60px;
+      cursor: pointer;
+    }
+  }
+  .icons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    mat-icon {
+      margin-right: 40px;
+      cursor: pointer;
+    }
+  }
 }

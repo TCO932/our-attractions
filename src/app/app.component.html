@@ -1,14 +1,26 @@
 <div class="view-container">
   <mat-toolbar class="menu" color="primary">
-    <h3 class="menu-item" (click)="navigate('main')">Наши достопримечательности</h3>
-    <h3 class="menu-item" (click)="navigate('attraction')">Все достопримечательности</h3>
+    <!-- <div class="img"></div> -->
+    <img (click)="navigate('main')" src="/assets/logo.png" alt="">
+    <!-- <h3 class="menu-item" (click)="navigate('main')">Наши достопримечательности</h3> -->
+    <h3 class="menu-item" (click)="navigate('attractions')">Все достопримечательности</h3>
     <span class="spacer"></span>
      <button *ngIf="!isLogedIn" mat-stroked-button (click)="navigate('login')">Вход</button>
      <button *ngIf="isLogedIn" color="primary" mat-fab><mat-icon>person_outline</mat-icon></button>
-   </mat-toolbar>
+  </mat-toolbar>
    <mat-divider></mat-divider>
    <router-outlet></router-outlet>
    <div class="footer">
-   
-   </div>
+    <div class="footer-container">
+      <img (click)="navigate('main')" src="/assets/logo.png" alt="">
+      <span (click)="navigate('attractions')" class="text">Все достопримечательности</span>
+      <span (click)="navigate('about')" class="text">О нас</span>
+      <div class="icons">
+        <span class="icons-row">
+          <mat-icon (click)="navigate('vk')" svgIcon="vk"></mat-icon> 
+          <mat-icon (click)="navigate('tg')" svgIcon="tg"></mat-icon> 
+        </span>
+      </div>
+    </div>
+  </div>
 </div>

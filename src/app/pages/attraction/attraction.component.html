@@ -1,1 +1,59 @@
-<p>attraction works!</p>
+<div class="attraction-container sm:col-11 md:col-11 lg:col-10 xl:col-9 mx-auto px-2">
+    <div class="pics-container">
+        <p-carousel [value]="pics" [numVisible]="1" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions">
+            <ng-template let-pic pTemplate="item">
+                <div class="pic-container">
+                    <img src="../../assets/wall.png" [alt]="pic.name" class="pic" />
+                </div>
+            </ng-template>
+        </p-carousel>
+    </div>
+    <div class="description">
+        <div class="own">
+            <h2>Описание</h2>
+            <textarea class="text" [value]="sampleText"></textarea>
+        </div>
+        <div class="wiki">
+            <h2>Информация из Интернета (Википедия)</h2>
+            {{sampleText}}
+        </div>
+    </div>
+    <div class="map">
+        <div class="header">
+            <h2>Расположение на карте</h2>
+            <h3 class="date">Дата создания метки</h3>
+        </div>
+        <div class="map-container">
+            <div class="map-placeholder">
+                <img src="../../assets/map.png" alt="">
+            </div>
+        </div>
+        <div class="footer">
+            <span>Создатель метки: Вася Пупкин</span>
+            <button class="text-button" mat-stroked-button>Редактировать метку</button>
+            <button class="text-button" mat-stroked-button>Удалить метку</button>
+        </div>
+
+    </div>
+    <div class="add-comment">
+        <textarea class="text" [value]="sampleText"></textarea>
+        <div class="button-container">
+            <button class="text-button" mat-stroked-button>Отправить</button>
+        </div>
+
+    </div>
+    <div class="comments">
+        <h2 style="margin-bottom: 0.2rem;">Все комментарии</h2>
+        <mat-divider></mat-divider>
+        <div class="commnets-container sm:col-11 md:col-11 lg:col-10 xl:col-10 mx-auto px-2">
+            <div *ngFor="let comment of [{name: 'name1', text: 'sadasdas'}, {name: 'name2', text: 'sadasdas'}, {name: 'name3', text: sampleText}, ]">
+                <div class="comment">
+                    <span>{{comment.name}}</span><br>  
+                    <div class="comment-text">
+                        {{comment.text}}
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

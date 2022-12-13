@@ -27,7 +27,7 @@ export class AttractionsComponent implements OnInit {
   }
 
   addAttraction() {
-    
+    this.router.navigate([`add-attraction`]);
   }
 
   searchAttraction() {

@@ -15,14 +15,11 @@ mat-toolbar {
 .footer {
   flex: 0 1 auto;
   background-color:rgb(172, 172, 172);
-  height: 100px;
   width: 100%;
 }
 
 ::ng-deep router-outlet + *{
-  // margin: 0 auto;
   width: 100%;
-  // max-width: 80%;
   flex: 1 1 auto;
   min-height: calc(100vh - 201px);
 }
@@ -50,19 +47,12 @@ img {
   cursor: pointer;
 }
 
+
 .footer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   .footer-container {
-    margin: auto 0;
-    font-size: 1.3rem;
-    display: flex;
-    justify-content: space-around;
-    span.text {
-      display: inline-block;
-      line-height: 60px;
+    p.text {
       cursor: pointer;
+      margin-right: 2rem;
     }
   }
   .icons {
@@ -70,7 +60,7 @@ img {
     flex-direction: column;
     justify-content: center;
     mat-icon {
-      margin-right: 40px;
+      margin-right: 2rem;
       cursor: pointer;
     }
   }

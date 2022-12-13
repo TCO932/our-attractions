@@ -1,9 +1,12 @@
 :host {
-  .map {
-    height: calc(100vh - 100px);
-    img {
-      height: 100%;
+  .map-container {
+    .map-placeholder {
+      img {
+        width: 100%;
+        background-size: cover;
+      }
     }
+    margin: 1rem 0;
   }
 
   .search-container {

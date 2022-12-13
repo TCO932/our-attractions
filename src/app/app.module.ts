@@ -12,6 +12,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 
+import {CarouselModule} from 'primeng/carousel';
+import {ButtonModule} from 'primeng/button';
+
 import { MainComponent } from './pages/main/main.component';
 import { SearchComponent } from './pages/search/search.component';
 import { AttractionComponent } from './pages/attraction/attraction.component';
@@ -20,8 +23,8 @@ import { RegistrationComponent } from './pages/registration/registration.compone
 import { LoginComponent } from './pages/login/login.component';
 import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
 import { AttractionsComponent } from './pages/attractions/attractions.component';
-import { AboutComponent } from './about/about.component';
-import { AddAttractionComponent } from './add-attraction/add-attraction.component';
+import { AboutComponent } from './pages/about/about.component';
+import { AddAttractionComponent } from './pages/add-attraction/add-attraction.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +50,8 @@ import { AddAttractionComponent } from './add-attraction/add-attraction.componen
     ReactiveFormsModule,
     MatInputModule,
     MatCheckboxModule,
+    CarouselModule,
+    ButtonModule,
     HttpClientModule,
     HttpClientXsrfModule
   ],

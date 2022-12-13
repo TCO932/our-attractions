@@ -2,21 +2,18 @@
   .attractions-container {
     margin-top: 30px;
     .search {
-      padding: 0 10rem;
       .bar {
-        padding: 0 6rem;
-        display: grid;
-        grid-template-columns: 8fr 1fr 1fr;
         button {
           $base-color: #c6538c;
-          height: calc(2.5rem + 4px);
-          width: calc(2.5rem + 4px);
+          height: calc(2.5rem);
+          width: calc(2.5rem);
           padding-top: 4px;
           margin-left: auto;
           border-radius: 8px;
           border-width: 1px;
           border-color: black;
           background-color: white;
+          cursor: pointer;
         }
         .input {
           height: 2.5rem;
@@ -32,13 +29,11 @@
       }
     }
     .attractions {
-      padding: 0 10rem;
       .item {
-        height: 150px;
+        min-height: 150px;
         border-radius: 8px;
         background-color: rgb(122, 122, 122);
         background-size: cover !important;
-        margin: 30px 0;
         display: flex;
         justify-content: center ;
         .info {
@@ -48,12 +43,9 @@
           justify-content: space-around;
           text-transform: uppercase;
           .text {
-            padding: 4px 16px;
             background-color: white;
             text-align: center;
             .name {
-              padding: 30px;
-              font-size: 2rem;
               letter-spacing: 0.135rem;
             }
             .date {

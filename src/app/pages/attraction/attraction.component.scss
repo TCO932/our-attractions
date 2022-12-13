@@ -1,0 +1,94 @@
+:host {
+    .attraction-container {
+        // margin-bottom: 3rem;
+        // display: flex;
+        // flex-direction: column;
+        // justify-content: center;
+        .pics-container {
+            margin: 0 auto;
+            width: 100%;
+            .pic-container {
+                margin: 0 auto;
+                display: flex;
+                justify-content: center;
+                .pic {
+                    margin: auto;
+                    background-size: cover;
+                    height: calc((100vh - 100px) * 0.5);
+                }
+            }
+        }
+        .description {
+            .own {
+                .text {
+                }
+            }
+        }
+        .map {
+            .header {
+                display: flex;
+                justify-content: space-between;
+            }
+            .map-container {
+                
+                .map-placeholder {
+                    img {
+                        width: 100%;
+                        background-size: cover;
+                    }
+                }
+                margin: 1rem 0;
+            }
+            .footer {
+                display: flex;
+                justify-content: space-between;
+            }
+        }
+        .add-comment {
+            margin: 3rem 0;
+            .text {
+            }
+            .button-container {
+                display: flex;
+                justify-content: end;
+            }
+        }
+        .comments {
+            .commnets-container {
+                .comment {
+                    margin-top: 2rem;
+                    margin-bottom: 2rem;
+                    .comment-text {
+                        margin-top: 0.2rem;
+                        border: black solid;
+                        border-width: 1px;
+                        border-radius: 8px;
+                        padding: 1rem;
+                    }
+                }
+            }
+        }
+    }
+
+    .text {
+        border: black solid;
+        border-width: 1px;
+        border-radius: 8px;
+        width: 100%;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        min-height: 8rem;
+        resize: none;
+    }
+
+    ::ng-deep .p-carousel .p-carousel-indicators .p-carousel-indicator.p-highlight button {
+        background: #3d3d3d;
+        color: #aa0000;
+    }
+      
+    ::ng-deep .p-link:focus {
+    outline: 0 none;
+    outline-offset: 0;
+    box-shadow: 0 0 0 0.2rem #8181814f;
+    }
+}

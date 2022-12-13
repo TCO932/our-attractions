@@ -1,5 +1,5 @@
-<div class="container">
-    <form [formGroup]="registrationForm" (submit)="register()" class="registration-form">
+<div class="registration-container sm:col-11 md:col-11 lg:col-3 xl:col-3 mx-auto px-2">
+    <form [formGroup]="registrationForm" (submit)="register()" class="registration-form py-4 lg:py-5">
       <mat-form-field class="example-full-width">
         <mat-label>Email</mat-label>
         <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com">

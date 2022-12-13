@@ -1,25 +1,29 @@
 <div class="view-container">
   <mat-toolbar class="menu" color="primary">
-    <!-- <div class="img"></div> -->
     <img (click)="navigate('main')" src="/assets/logo.png" alt="">
-    <!-- <h3 class="menu-item" (click)="navigate('main')">Наши достопримечательности</h3> -->
-    <h3 class="menu-item" (click)="navigate('attractions')">Все достопримечательности</h3>
+    <p class="menu-item lg:text-2xl md:text-xl" (click)="navigate('attractions')">Все<br>достопримечательности</p>
     <span class="spacer"></span>
      <button *ngIf="!isLogedIn" mat-stroked-button (click)="navigate('login')">Вход</button>
      <button *ngIf="isLogedIn" color="primary" mat-fab><mat-icon>person_outline</mat-icon></button>
   </mat-toolbar>
    <mat-divider></mat-divider>
    <router-outlet></router-outlet>
-   <div class="footer">
-    <div class="footer-container">
-      <img (click)="navigate('main')" src="/assets/logo.png" alt="">
-      <span (click)="navigate('attractions')" class="text">Все достопримечательности</span>
-      <span (click)="navigate('about')" class="text">О нас</span>
-      <div class="icons">
-        <span class="icons-row">
+   <div class="footer p-2">
+    <div class="footer-container grid">
+      <div class="col-2 flex justify-content-end flex-wrap align-content-center">
+        <img (click)="navigate('main')" src="/assets/logo.png" alt="">
+      </div>
+      <div class="col-8">
+        <div class="flex align-content-center flex-wrap h-full">
+          <p (click)="navigate('attractions')" class="text lg:text-2xl md:text-xl">Все достопримечательности</p>
+          <p (click)="navigate('about')" class="text lg:text-2xl md:text-xl vertical-align-middle">О нас</p>
+        </div>
+      </div>
+      <div class="icons col-2">
+        <div class="flex justify-content-end flex-wrap">
           <mat-icon (click)="navigate('vk')" svgIcon="vk"></mat-icon> 
           <mat-icon (click)="navigate('tg')" svgIcon="tg"></mat-icon> 
-        </span>
+        </div>
       </div>
     </div>
   </div>

@@ -1,11 +1,11 @@
-<div class="attractions-container">
+<div class="attractions-container sm:col-11 md:col-11 lg:col-10 xl:col-9 mx-auto px-2">
     <div class="search">
-        <div class="bar">
-            <input class="input" type="text" matInput placeholder="Поиск">
-            <button class="icon-btn" color="primary"><mat-icon>search</mat-icon></button>
-            <button class="icon-btn" color="primary"><mat-icon>add</mat-icon></button>
+        <div class="bar flex align-content-center">
+            <input class="input flex-grow-1" type="text" matInput placeholder="Поиск">
+            <button (click)="searchAttraction()" class="icon-btn ml-1" color="primary"><mat-icon>search</mat-icon></button>
+            <button (click)="addAttraction()" class="icon-btn ml-1" color="primary"><mat-icon>add</mat-icon></button>
         </div>
-        <div class="filters">
+        <div class="filters lg:text-xl text-sm">
             <span>Сортировать:</span>
             <mat-checkbox class="filter">по названию</mat-checkbox>
             <mat-checkbox class="filter">по дате добавления</mat-checkbox>
@@ -13,18 +13,18 @@
         </div>
     </div>
     <div class="attractions">
-        <div class="item" *ngFor="let item of attractions" [ngStyle]="{background: 'url(../../assets/wall.png)'}">
+        <div class="item mb-1 xl:mb-2" *ngFor="let item of attractions" [ngStyle]="{background: 'url(../../assets/wall.png)'}">
             <div class="info">
-                <div class="text">
-                    <span class="name">
+                <div class="text p-2">
+                    <span class="name lg:text-2xl text-sm ">
                         {{item.name}}
                     </span>
                     <br>
-                    <span class="date">
+                    <span class="date lg:text-base text-xs ">
                         Дата добавления: {{item.date}}
                     </span>
                 </div>
-                <button  class="details-button underlined" type="button" mat-stroked-button>Подробнее</button>
+                <button (click)="goToDetails(item.id)" class="details-button underlined" type="button" mat-stroked-button>Подробнее</button>
             </div>
 
         </div>

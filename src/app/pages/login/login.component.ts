@@ -14,15 +14,24 @@ export class LoginComponent {
     password: new FormControl(''),
   });
 
+  constructor(
+    private authServise: AuthService,
+    private router: Router,
+  ) {
+
+  }
+  
+  ngOnInit(): void {
+    this.authServise.isAuth.subscribe(res => {
+      if (res == true) {
+        this.router.navigate(['attractions']);
+      }
+    });
+    this.authServise.checkAuth();
+  }
+
   logIn() {
-    // вход
+    const controls = this.loginForm.controls;
+    this.authServise.login(controls.email.value!, controls.password.value!);
   }
 }
-  
-//   constructor(
-//     private router: Router,
-//     private authServise: AuthService,
-//   ) {
-    
-//   }
-// }

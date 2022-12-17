@@ -1,52 +1,72 @@
 import { HttpClient, HttpHeaders, HttpResponse, HttpXsrfTokenExtractor } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject, Subscriber } from 'rxjs';
 import { environment } from '../../environments/environment';
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService implements OnInit {
+export class AuthService{
+  public isAuth = new Subject<boolean>();
 
   constructor(
     private http: HttpClient,
-    private cookieExtractor: HttpXsrfTokenExtractor,
   ) { 
-    console.log('getting token')
-    // const token = sessionStorage.getItem('XSRF-TOKEN');
-    // if (!token) {
-    //   this.getToken();
-    // }
-    this.getToken();
   }
 
-  ngOnInit(): void {
-  }
-
-  setToken(token: string) {
-    sessionStorage.setItem('XSRF-TOKEN', token);
+  checkAuth() {
+    this.isAuth.next(!!localStorage.getItem('token'));
   }
 
   getToken() {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
-    })
+    return localStorage.getItem('token');
+  }
+
+  register(email: string, name: string, password: string, password_confirmation: string) {
+    const headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
-    this.http.get(environment.api + 'sanctum/csrf-cookie', { observe: 'response', withCredentials: true, headers: headers }).subscribe(res => {
-      console.log(res)
+    const body = {
+      email: email,
+      name: name,
+      password: password,
+      password_confirmation: password_confirmation,
+    }
+    this.http.post(environment.api + 'register', body, { headers: headers }).subscribe((res: any) => {
+      if (res.result == 'success') {
+        localStorage.setItem('token', res.remember_token);
+        this.isAuth.next(true);
+      }
     });
-    // const httpOptions = {
-    //   headers: new HttpHeaders({
-    //     "Content-Type": "application/json",
-    //   }),
-    //   observe: "response"
-    // };
-    // this.http.get<any>(environment.api + 'sanctum/csrf-cookie', httpOptions).subscribe(
-    //   (res) => {
-    //     console.log(res)
-    //   }
-    // )
+  }
+
+  login(email: string, password: string) {
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    const body = {
+      email: email,
+      password: password,
+    }
+    this.http.post(environment.api + 'login', body, { headers: headers }).subscribe((res: any) => {
+      if (res.result == 'success') {
+        localStorage.setItem('token', res.remember_token);
+        this.isAuth.next(true);
+      }
+    });
+  }
+
+  logout() {
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    const body = {
+      remember_token: this.getToken(),
+    }
+    this.http.post(environment.api + 'logout', body, { headers: headers }).subscribe((res: any) => {
+      if (res.result == 'success') {
+        localStorage.removeItem('token');
+        this.isAuth.next(false);
+      }
+    });
   }
 
 }

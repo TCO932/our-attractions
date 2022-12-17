@@ -3,8 +3,8 @@
     <img (click)="navigate('main')" src="/assets/logo.png" alt="">
     <p class="menu-item lg:text-2xl md:text-xl" (click)="navigate('attractions')">Все<br>достопримечательности</p>
     <span class="spacer"></span>
-     <button *ngIf="!isLogedIn" mat-stroked-button (click)="navigate('login')">Вход</button>
-     <button *ngIf="isLogedIn" color="primary" mat-fab><mat-icon>person_outline</mat-icon></button>
+     <button *ngIf="!isLoggedIn" mat-stroked-button (click)="navigate('login')">Вход</button>
+     <button *ngIf="isLoggedIn" mat-stroked-button (click)="logout()">Выход</button>
   </mat-toolbar>
    <mat-divider></mat-divider>
    <router-outlet></router-outlet>

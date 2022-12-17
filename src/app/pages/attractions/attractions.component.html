@@ -1,27 +1,29 @@
 <div class="attractions-container sm:col-11 md:col-11 lg:col-10 xl:col-9 mx-auto px-2">
     <div class="search">
         <div class="bar flex align-content-center">
-            <input class="input flex-grow-1" type="text" matInput placeholder="Поиск">
-            <button (click)="searchAttraction()" class="icon-btn ml-1" color="primary"><mat-icon>search</mat-icon></button>
-            <button (click)="addAttraction()" class="icon-btn ml-1" color="primary"><mat-icon>add</mat-icon></button>
+            <input #search class="input flex-grow-1" type="search" (search)="searchAttraction(search.value)" matInput placeholder="Поиск">
+            <button (click)="searchAttraction(search.value)" class="icon-btn ml-1" color="primary"><mat-icon>search</mat-icon></button>
+            <button (click)="addAttraction()" *ngIf="isLoggedIn" class="icon-btn ml-1" color="primary"><mat-icon>add</mat-icon></button>
         </div>
         <div class="filters lg:text-xl text-sm">
             <span>Сортировать:</span>
-            <mat-checkbox class="filter">по названию</mat-checkbox>
-            <mat-checkbox class="filter">по дате добавления</mat-checkbox>
-            <mat-checkbox class="filter">показать только мои</mat-checkbox>
+            <mat-radio-group [(ngModel)]="sorted" (change)="load()" aria-label="Select an option">
+                <mat-radio-button [value]="0">по дате добавления</mat-radio-button>
+                <mat-radio-button [value]="1">по названию</mat-radio-button>
+            </mat-radio-group>
+            <mat-checkbox *ngIf="isLoggedIn" (change)="filter = !filter; load()" [checked]="filter" class="filter">показать только мои</mat-checkbox>
         </div>
     </div>
     <div class="attractions">
-        <div class="item mb-1 xl:mb-2" *ngFor="let item of attractions" [ngStyle]="{background: 'url(../../assets/wall.png)'}">
+        <div class="item mb-1 xl:mb-2" *ngFor="let item of attractions" [ngStyle]="{background: 'url(' + item.images[0].url+ ')'}">
             <div class="info">
                 <div class="text p-2">
                     <span class="name lg:text-2xl text-sm ">
-                        {{item.name}}
+                        {{item.title}}
                     </span>
                     <br>
                     <span class="date lg:text-base text-xs ">
-                        Дата добавления: {{item.date}}
+                        Дата добавления: {{item.created_at | date:"d.MM.y"}}
                     </span>
                 </div>
                 <button (click)="goToDetails(item.id)" class="details-button underlined" type="button" mat-stroked-button>Подробнее</button>

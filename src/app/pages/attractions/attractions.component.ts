@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Filter } from 'src/app/data';
+import { debounceTime } from 'rxjs';
+import { Attraction, Filter } from 'src/app/data';
+import { AuthService } from 'src/app/services/auth.service';
+import { SomeAttractionsService } from 'src/app/services/some-attractions.service';
 
 @Component({
   selector: 'app-attractions',
@@ -8,21 +12,34 @@ import { Filter } from 'src/app/data';
   styleUrls: ['./attractions.component.scss']
 })
 export class AttractionsComponent implements OnInit {
-  public filter: Filter = {};
+  public isLoggedIn: boolean = false;
+  public sorted : number = 0;
+  public filter: boolean = false;
   public attractionName: string = '';
-  public attractions: any[] = [];
+  public attractions: Attraction[] = [];
 
   constructor(
     private router: Router,
-  ) {
+    private attractionsService: SomeAttractionsService,
+    private authService: AuthService,
+    ) {
 
   }
 
   ngOnInit(): void {
-    this.attractions = this.searchAttraction()
+    this.authService.isAuth.subscribe(res => this.isLoggedIn = res);
+    this.authService.checkAuth();
+    this.load();
   }
 
-  goToDetails(id: string) {
+  load() {
+    this.attractionsService.getAttractions(this.sorted, +this.filter).subscribe((res: any) => {
+      this.attractions = res.data
+      console.log(this.attractions);
+    })
+  }
+
+  goToDetails(id: number) {
     this.router.navigate([`attraction/${id}`]);
   }
 
@@ -30,39 +47,15 @@ export class AttractionsComponent implements OnInit {
     this.router.navigate([`add-attraction`]);
   }
 
-  searchAttraction() {
-    return [
-      {
-        id: '1',
-        name: 'великая китайская стена',
-        date: '12.12.2022'
-      },
-      {
-        id: '2',
-        name: 'atr2',
-        date: '12.12.2022'
-      },
-      {
-        id: '3',
-        name: 'atr3',
-        date: '12.12.2022'
-      },
-      {
-        id: '4',
-        name: 'atr4',
-        date: '12.12.2022'
-      },
-      {
-        id: '5',
-        name: 'atr5',
-        date: '12.12.2022'
-      },
-      {
-        id: '6',
-        name: 'atr6',
-        date: '12.12.2022'
-      },
-    ]
+  searchAttraction(name: string) {
+    if (name.trim().length == 0) {
+      this.load();
+    } else {
+      this.attractionsService.searchAttractions(name, this.sorted, +this.filter).subscribe((res: any) => {
+        this.attractions = res.data
+        console.log(this.attractions);
+      })
+    }
   }
 
 }

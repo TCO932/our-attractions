@@ -1,12 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Attraction } from 'src/app/data';
+import { AuthService } from 'src/app/services/auth.service';
+import { SomeAttractionsService } from 'src/app/services/some-attractions.service';
 @Component({
   selector: 'app-attraction',
   templateUrl: './attraction.component.html',
   styleUrls: ['./attraction.component.scss']
 })
 export class AttractionComponent implements OnInit{
-  ngOnInit(): void {
-  }
+  public id!: number;
+  public attraction?: Attraction;
+  public isLoggedIn: boolean = false;
   public pics = [
     {name: '1'},
     {name: '2'},
@@ -31,5 +36,32 @@ export class AttractionComponent implements OnInit{
     }
   ];
 
-  public sampleText = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi quae architecto itaque a doloribus ab ad, consequatur numquam esse magni provident repellat! Numquam, nihil eligendi similique dolore ullam et a?'
+  constructor(
+    private attractionsService: SomeAttractionsService,
+    private route: ActivatedRoute,
+    private authService: AuthService,
+    ) {
+
+  }
+
+  ngOnInit(): void {
+    this.id = Number(this.route.snapshot.params['id']);
+    this.authService.isAuth.subscribe(res => this.isLoggedIn = res);
+    this.authService.checkAuth();
+    this.load();
+  }
+
+  load() {
+    this.attractionsService.getAttraction(this.id).subscribe((res: any) => {
+      this.attraction = res.data
+    })
+  }
+
+  sendComment(text: string) {
+    this.attractionsService.addComment(this.id, 'а чо у комментов есть название 0_о', text).subscribe({
+      next: res => {
+        this.load();
+      }
+    });
+  }
 }

@@ -1,42 +1,46 @@
 <div class="add-attraction-container sm:col-11 md:col-11 lg:col-10 xl:col-9 mx-auto px-2">
-    <div class="flex justify-content-center">
-        <h1 class="text-transform: uppercase text-center">Добавление новой достопримечательности</h1>
-    </div>
-    <div class="mb-6">
-        <h2 class="text-transform: uppercase">Название</h2>
-        <input class="input w-full" type="text" matInput placeholder="Введите название">
-    </div>
-    <div class="mb-6">
-        <h2 class="text-transform: uppercase">Загрузка фотографий</h2>
-        <div #content class="flex justify-content-around flex-wrap">
-            <div #pic [style.height.px]="content.offsetWidth/4" [style.width.px]="content.offsetWidth/4" class="pic mx-2 p-5">
-                <mat-icon class="add-icon">add</mat-icon>
-            </div>
-            <div #pic [style.height.px]="content.offsetWidth/4" [style.width.px]="content.offsetWidth/4" class="pic mx-2 p-5">
-                <mat-icon class="add-icon">add</mat-icon>
-            </div>
-            <div #pic [style.height.px]="content.offsetWidth/4" [style.width.px]="content.offsetWidth/4" class="pic mx-2 p-5">
-                <mat-icon class="add-icon">add</mat-icon>
+    <form [formGroup]="attractionForm" (submit)="save()">
+
+        <div class="flex justify-content-center">
+            <h1 class="text-transform: uppercase text-center text-xl lg:text-4xl">Добавление новой достопримечательности</h1>
+        </div>
+        <div class="mb-6">
+            <h2 class="text-transform: uppercase">Название</h2>
+            <input class="input w-full" type="text" matInput formControlName="title" placeholder="Введите название">
+        </div>
+        <div class="mb-6">
+            <h2 class="text-transform: uppercase">Загрузка фотографий</h2>
+            <div #content class="flex overflow-x-auto">
+                <label class="cursor-pointer pic m-2">
+                    <input class="hidden" type="file" (change)="addFile($event)" accept="image/png, image/gif, image/jpeg" >
+                    <mat-icon class="add-icon m-auto">add</mat-icon>
+                </label>
+                <div *ngFor="let pic of pics" class="flex relative m-2">
+                    <img [src]="pic.url" class="pic p-0">
+                    <div class="cursor-pointer w-2rem h-2rem delete-icon"> 
+                        <mat-icon (click)="deleteFile(pic.id)" class="add-icon m-auto">close</mat-icon>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="mb-6">
-        <h2 class="text-transform: uppercase">Описание</h2>
-        <textarea class="description w-full"></textarea>
-    </div>
-    <div class="mb-6">
-        <h2 class="text-transform: uppercase">Информация из интернета (википедия)</h2>
-        <input class="input w-full" type="text" matInput placeholder="Вставьте ссылку">
-    </div>
-    <div class="mb-6">
-        <h2 class="text-transform: uppercase">Расположение на карте</h2>
-        <div class="map-container">
-            <div class="map-placeholder">
-                <img src="../../assets/map.png" alt="">
+        <div class="mb-6">
+            <h2 class="text-transform: uppercase">Описание</h2>
+            <textarea formControlName="description" class="description w-full"></textarea>
+        </div>
+        <div class="mb-6">
+            <h2 class="text-transform: uppercase">Информация из интернета (википедия)</h2>
+            <input class="input w-full" type="text" matInput placeholder="Вставьте ссылку">
+        </div>
+        <div class="mb-6">
+            <h2 class="text-transform: uppercase">Расположение на карте</h2>
+            <div class="map-container">
+                <div class="map-placeholder">
+                    <img src="../../assets/map.png" alt="">
+                </div>
+            </div>
+            <div class="flex justify-content-center mb-6">
+                <button class="text-button text-transform: uppercase" mat-stroked-button type="submit">Добавить</button>
             </div>
         </div>
-        <div class="flex justify-content-center mb-6">
-            <button class="text-button text-transform: uppercase" mat-stroked-button>Добавить</button>
-        </div>
-    </div>
+    </form>
 </div>

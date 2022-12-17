@@ -13,7 +13,7 @@
 
       <mat-form-field class="example-full-width">
         <mat-label>Имя</mat-label>
-        <input type="text" matInput formControlName="name" placeholder="Ex. pat@example.com">
+        <input type="text" matInput formControlName="name">
         <mat-error *ngIf="registrationForm.hasError('email') && !registrationForm.hasError('required')">
           Please enter a valid email address
         </mat-error>

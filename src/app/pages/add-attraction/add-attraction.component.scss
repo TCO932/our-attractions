@@ -22,13 +22,27 @@
 
     .pic {
         border: 1px solid black;
-        padding: 1px 16px;
+        width: 15rem !important;
+        height: 15rem !important;
         .add-icon {
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 100%;
-            height: 100%;
+            width: 15rem;
+            height: 15rem;
+        }
+    }
+
+    .delete-icon {
+        background-color: rgba(0, 0, 0, 0.404);
+        position: absolute;
+        right: 0;
+        mat-icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 2rem;
+            height: 2rem;
         }
     }
 

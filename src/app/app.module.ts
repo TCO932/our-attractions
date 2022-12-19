@@ -16,6 +16,9 @@ import {MatRadioModule} from '@angular/material/radio';
 
 import {CarouselModule} from 'primeng/carousel';
 import {ButtonModule} from 'primeng/button';
+import {ToastModule} from 'primeng/toast';
+import {PaginatorModule} from 'primeng/paginator';
+import { MessageService } from 'primeng/api';
 
 import { MainComponent } from './pages/main/main.component';
 import { SearchComponent } from './pages/search/search.component';
@@ -27,6 +30,8 @@ import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
 import { AttractionsComponent } from './pages/attractions/attractions.component';
 import { AboutComponent } from './pages/about/about.component';
 import { AddAttractionComponent } from './pages/add-attraction/add-attraction.component';
+import { YmapComponent } from './components/ymap/ymap.component';
+import { EditAttractionComponent } from './pages/edit-attraction/edit-attraction.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +44,9 @@ import { AddAttractionComponent } from './pages/add-attraction/add-attraction.co
     LoginComponent,
     AttractionsComponent,
     AboutComponent,
-    AddAttractionComponent
+    AddAttractionComponent,
+    YmapComponent,
+    EditAttractionComponent
   ],
   imports: [
     BrowserModule,
@@ -56,11 +63,13 @@ import { AddAttractionComponent } from './pages/add-attraction/add-attraction.co
     MatRadioModule,
     CarouselModule,
     ButtonModule,
+    ToastModule,
+    PaginatorModule,
     HttpClientModule,
     HttpClientXsrfModule
   ],
 
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

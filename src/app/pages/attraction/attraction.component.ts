@@ -12,12 +12,7 @@ export class AttractionComponent implements OnInit{
   public id!: number;
   public attraction?: Attraction;
   public isLoggedIn: boolean = false;
-  public pics = [
-    {name: '1'},
-    {name: '2'},
-    {name: '3'},
-    {name: '4'},
-  ]
+  public markCoords!: [number, number];
   public responsiveOptions = [
     {
         breakpoint: '1024px',
@@ -53,7 +48,9 @@ export class AttractionComponent implements OnInit{
 
   load() {
     this.attractionsService.getAttraction(this.id).subscribe((res: any) => {
-      this.attraction = res.data
+      this.attraction = res.data;
+      this.markCoords = [this.attraction!.latitude, this.attraction!.longitude];
+      console.log(this.markCoords);
     })
   }
 

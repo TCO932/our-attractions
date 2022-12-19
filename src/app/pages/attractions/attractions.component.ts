@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { debounceTime } from 'rxjs';
-import { Attraction, Filter } from 'src/app/data';
+import { Attraction, Filter, Links, Meta } from 'src/app/data';
 import { AuthService } from 'src/app/services/auth.service';
 import { SomeAttractionsService } from 'src/app/services/some-attractions.service';
 
@@ -17,6 +17,10 @@ export class AttractionsComponent implements OnInit {
   public filter: boolean = false;
   public attractionName: string = '';
   public attractions: Attraction[] = [];
+  public links: Links = {};
+  public meta!: Meta;
+  public baseUrl: string = 'attractions';
+  public url: string = this.baseUrl;
 
   constructor(
     private router: Router,
@@ -33,8 +37,11 @@ export class AttractionsComponent implements OnInit {
   }
 
   load() {
-    this.attractionsService.getAttractions(this.sorted, +this.filter).subscribe((res: any) => {
-      this.attractions = res.data
+    this.attractionsService.getAttractions(this.url, this.sorted, +this.filter).subscribe((res: any) => {
+      this.attractions = res.data;
+      this.links = res.links;
+      this.meta = res.meta;
+
       console.log(this.attractions);
     })
   }
@@ -57,5 +64,16 @@ export class AttractionsComponent implements OnInit {
       })
     }
   }
+  setUrl(page: number) {
+    this.url = this.baseUrl + `?page=${page}`;
+  }
+  paginate(event: any) {
+    this.setUrl(event.page+1);
+    this.load();
+    //event.first = Index of the first record
+    //event.rows = Number of rows to display in new page
+    //event.page = Index of the new page
+    //event.pageCount = Total number of pages
 
+  }
 }

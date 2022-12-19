@@ -30,9 +30,9 @@
     }
     .attractions {
       .item {
-        min-height: 150px;
+        border: rgba(0, 0, 0, 0.1) solid 1px;
         border-radius: 8px;
-        background-color: rgb(122, 122, 122);
+        background-position: center !important;
         background-size: cover !important;
         display: flex;
         justify-content: center ;
@@ -40,9 +40,10 @@
           width: fit-content;
           display: flex;
           flex-direction: column;
-          justify-content: space-around;
+          justify-content: center;
           text-transform: uppercase;
           .text {
+            border: rgba(0, 0, 0, 0.1) solid 1px;
             background-color: white;
             text-align: center;
             .name {

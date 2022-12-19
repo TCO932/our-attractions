@@ -1,5 +1,8 @@
 :host {
   .map-container {
+    ::ng-deep #map {
+      height: 50vh;
+    }
     .map-placeholder {
       img {
         width: 100%;

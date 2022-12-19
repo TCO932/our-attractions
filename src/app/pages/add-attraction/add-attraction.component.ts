@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { AuthService } from 'src/app/services/auth.service';
 import { SomeAttractionsService } from 'src/app/services/some-attractions.service';
 
@@ -18,15 +20,16 @@ export class AddAttractionComponent implements OnInit {
   });
   public files: File[] = [];
   public pics: any[] = [];
+  public markCoords?: [number, number];
   constructor(
     private attractionsService: SomeAttractionsService,
-    private authService: AuthService,
+    private router: Router,
+    private messageService: MessageService,
   ) {
 
   }
   ngOnInit(): void {
   }
-
 
   addFile(event: any) {
     this.files.push(event.target.files[0]);
@@ -44,10 +47,31 @@ export class AddAttractionComponent implements OnInit {
 
   save() {
     const controls = this.attractionForm.controls;
-    // this.attractionsService.addAttraction(controls.title.value!, controls.description.value!, +controls.latitude.value!, +controls.longitude.value!, this.files)
-    this.attractionsService.addAttraction(controls.title.value!, controls.description.value!, 1, 1, this.files).subscribe(res => {
-      console.log(res)
-    })
+    if (!this.markCoords) {
+      console.log('выберите координаты')
+      return;
+    } else {
+
+      this.attractionsService.addAttraction(controls.title.value!, controls.description.value!, this.markCoords[0], this.markCoords[1], this.files).subscribe((res: any) => {
+        console.log(res.body)
+        this.messageService.add({
+          severity:'success', 
+          summary:'движ',
+        });
+        if (res.body?.attraction_created == 'success' || res.body?.attraction_created == 'wiki_not_found') {
+          this.messageService.add({
+            severity:'success', 
+            summary:'Достопримечательность добавлена',
+          });
+          this.router.navigate([`edit-attraction/${res.body.attraction.id}`]);
+        } else {
+          this.messageService.add({
+            severity:'error', 
+            summary:'Что-то пошло не так',
+          });
+        }
+      })
+    }
   }
 
 }

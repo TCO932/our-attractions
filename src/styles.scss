@@ -287,6 +287,23 @@ $altTheme: (
   }
 }
 
+.p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+  background: #e2e2e2 !important;
+  border-color: #e2e2e2 !important;
+  color: #292929 !important;
+}
+
+.p-link:focus {
+  outline: 0 none;
+  outline-offset: 0;
+  box-shadow: 0 0 0 0.2rem #c2c2c2 !important;
+}
+
+.p-paginator .p-paginator-pages .p-paginator-page:not(.p-highlight):hover {
+  background: #eeeeee !important;
+  border-color: transparent;
+}
+
 body {
   margin: 0;
 }

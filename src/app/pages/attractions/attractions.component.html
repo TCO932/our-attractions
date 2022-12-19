@@ -14,11 +14,11 @@
             <mat-checkbox *ngIf="isLoggedIn" (change)="filter = !filter; load()" [checked]="filter" class="filter">показать только мои</mat-checkbox>
         </div>
     </div>
-    <div class="attractions">
-        <div class="item mb-1 xl:mb-2" *ngFor="let item of attractions" [ngStyle]="{background: 'url(' + item.images[0].url+ ')'}">
+    <div class="attractions mb-4 xl:mb-6">
+        <div class="item mb-2 xl:mb-3 h-8rem lg:h-15rem" *ngFor="let item of attractions" [ngStyle]="{background: 'url(' + item.images[0]?.url+ ')'}">
             <div class="info">
-                <div class="text p-2">
-                    <span class="name lg:text-2xl text-sm ">
+                <div class="text p-2 mb-2 xl:mb-3">
+                    <span class="name lg:text-2xl text-sm">
                         {{item.title}}
                     </span>
                     <br>
@@ -31,7 +31,7 @@
 
         </div>
         <div class="pagination">    
-
+            <p-paginator [rows]="meta.per_page" [totalRecords]="meta.total" [pageLinkSize]="5" (onPageChange)="paginate($event)"></p-paginator>
         </div>
     </div>
 </div>

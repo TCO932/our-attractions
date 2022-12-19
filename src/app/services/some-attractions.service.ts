@@ -16,14 +16,14 @@ export class SomeAttractionsService {
     
   }
 
-  getAttractions(sorted: number, filter: number) {
+  getAttractions(url: string, sorted: number, filter: number) {
     let params = new HttpParams()
       .set('sorted', sorted)
       .set('filter', filter)
     if (filter == 1) {
       params = params.set('remember_token', this.authServise.getToken()!);
     }
-    return this.http.get(environment.api + 'attractions', {params});
+    return this.http.get(environment.api + url, {params});
   }
 
   getAttraction(id: number) {
@@ -48,6 +48,30 @@ export class SomeAttractionsService {
     });
 
     return this.http.request(req);
+  }
+
+  editAttraction(id: number | string, title: string, description: string, latitude: number, longitude: number, files: File[]): Observable<HttpEvent<any>> {
+    const formData: FormData = new FormData();
+
+    formData.append('remember_token', this.authServise.getToken()!);
+    formData.append('id', String(id));
+    formData.append('title', title);
+    formData.append('description', description);
+    formData.append('latitude', '' + latitude);
+    formData.append('longitude', '' + longitude);
+    for (let i = 0; i < files.length; i++) {
+      formData.append(`images[${i}]`, files[i]);
+    }
+
+    const req = new HttpRequest('POST', environment.api + `attractions/${id}`, formData, {
+      reportProgress: true,
+    });
+
+    return this.http.request(req);
+  }
+
+  getImage(imageUrl: string): Observable<Blob> {
+    return this.http.get(imageUrl, { responseType: 'blob' });
   }
 
   searchAttractions(search: string, sorted: number, filter: number) {

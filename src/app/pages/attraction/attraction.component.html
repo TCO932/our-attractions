@@ -8,28 +8,31 @@
             </ng-template>
         </p-carousel>
     </div>
-    <div class="title">
+    <div class="title text-xl lg:text-4xl">
         <h2>{{attraction?.title}}</h2>
     </div>
     <div class="description">
         <div class="own">
-            <h2>Описание</h2>
+            <h2 class="text-xl lg:text-4xl">Описание</h2>
             <textarea class="text" [value]="attraction?.description"></textarea>
         </div>
         <div class="wiki">
-            <h2>Информация из Интернета (<a [href]="attraction?.wiki_info_link">Википедия</a>)</h2>
+            <h2 class="text-xl lg:text-4xl">Информация из Интернета (<a [href]="attraction?.wiki_info_link">Википедия</a>)</h2>
             <div [innerHTML]="attraction?.wiki_info"></div>
         </div>
     </div>
     <div class="map">
         <div class="header">
-            <h2>Расположение на карте</h2>
-            <h3 class="date">Дата создания метки {{attraction?.created_at | date:"d.MM.y"}}</h3>
+            <h2 class="text-xl lg:text-4xl">Расположение на карте</h2>
+            <h3 class="date text-base lg:text-xl text-right">Дата создания метки {{attraction?.created_at | date:"d.MM.y"}}</h3>
         </div>
         <div class="map-container">
-            <div class="map-placeholder">
-                <img src="../../assets/map.png" alt="">
-            </div>
+            <ymap
+                [movable]="false"
+                [marksOn]="true"
+                [markCoords]="markCoords"
+                [center]="markCoords"
+            ></ymap>
         </div>
         <div class="footer">
             <span>Создатель метки: {{attraction?.creator}}</span>
@@ -46,7 +49,7 @@
     </div>
 
     <div *ngIf="attraction?.comments?.length" class="comments">
-        <h2 style="margin-bottom: 0.2rem;">Все комментарии</h2>
+        <h2 class="text-xl lg:text-4xl" style="margin-bottom: 0.2rem;">Все комментарии</h2>
         <mat-divider></mat-divider>
         <div class="commnets-container sm:col-11 md:col-11 lg:col-10 xl:col-10 mx-auto px-2">
             <div *ngFor="let comment of attraction?.comments">

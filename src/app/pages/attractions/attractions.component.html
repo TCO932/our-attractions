@@ -1,37 +1,39 @@
-<div class="attractions-container sm:col-11 md:col-11 lg:col-10 xl:col-9 mx-auto px-2">
-    <div class="search">
-        <div class="bar flex align-content-center">
-            <input #search class="input flex-grow-1" type="search" (search)="searchAttraction(search.value)" matInput placeholder="Поиск">
-            <button (click)="searchAttraction(search.value)" class="icon-btn ml-1" color="primary"><mat-icon>search</mat-icon></button>
-            <button (click)="addAttraction()" *ngIf="isLoggedIn" class="icon-btn ml-1" color="primary"><mat-icon>add</mat-icon></button>
-        </div>
-        <div class="filters lg:text-xl text-sm">
-            <span>Сортировать:</span>
-            <mat-radio-group [(ngModel)]="sorted" (change)="load()" aria-label="Select an option">
-                <mat-radio-button [value]="0">по дате добавления</mat-radio-button>
-                <mat-radio-button [value]="1">по названию</mat-radio-button>
-            </mat-radio-group>
-            <mat-checkbox *ngIf="isLoggedIn" (change)="filter = !filter; load()" [checked]="filter" class="filter">показать только мои</mat-checkbox>
-        </div>
-    </div>
-    <div class="attractions mb-4 xl:mb-6">
-        <div class="item mb-2 xl:mb-3 h-8rem lg:h-15rem" *ngFor="let item of attractions" [ngStyle]="{background: 'url(' + item.images[0]?.url+ ')'}">
-            <div class="info">
-                <div class="text p-2 mb-2 xl:mb-3">
-                    <span class="name lg:text-2xl text-sm">
-                        {{item.title}}
-                    </span>
-                    <br>
-                    <span class="date lg:text-base text-xs ">
-                        Дата добавления: {{item.created_at | date:"d.MM.y"}}
-                    </span>
-                </div>
-                <button (click)="goToDetails(item.id)" class="details-button underlined" type="button" mat-stroked-button>Подробнее</button>
+<div class="attractions-bg" [ngStyle]="{background: 'url(../../assets/trees-search.png) no-repeat'}">
+    <div class="attractions-container sm:col-11 md:col-11 lg:col-10 xl:col-9 mx-auto px-2">
+        <div class="search">
+            <div class="bar flex align-content-center">
+                <input #search class="input flex-grow-1" type="search" (search)="searchAttraction(search.value)" matInput placeholder="Поиск">
+                <button (click)="searchAttraction(search.value)" class="icon-btn ml-1" color="primary"><mat-icon>search</mat-icon></button>
+                <button (click)="addAttraction()" *ngIf="isLoggedIn" class="icon-btn ml-1" color="primary"><mat-icon>add</mat-icon></button>
             </div>
-
+            <div class="filters lg:text-xl text-sm">
+                <span>Сортировать:</span>
+                <mat-radio-group [(ngModel)]="sorted" (change)="load()" aria-label="Select an option">
+                    <mat-radio-button [value]="0">по дате добавления</mat-radio-button>
+                    <mat-radio-button [value]="1">по названию</mat-radio-button>
+                </mat-radio-group>
+                <mat-checkbox *ngIf="isLoggedIn" (change)="filter = !filter; load()" [checked]="filter" class="filter">показать только мои</mat-checkbox>
+            </div>
         </div>
-        <div class="pagination">    
-            <p-paginator [rows]="meta.per_page" [totalRecords]="meta.total" [pageLinkSize]="5" (onPageChange)="paginate($event)"></p-paginator>
+        <div class="attractions mb-4 xl:mb-6">
+            <div class="item mb-2 xl:mb-3 h-8rem lg:h-15rem" *ngFor="let item of attractions" [ngStyle]="{background: 'url(' + item.images[0]?.url+ ')'}">
+                <div class="info">
+                    <div class="text p-2 mb-2 xl:mb-3">
+                        <span class="name lg:text-2xl text-sm">
+                            {{item.title}}
+                        </span>
+                        <br>
+                        <span class="date lg:text-base text-xs ">
+                            Дата добавления: {{item.created_at | date:"d.MM.y"}}
+                        </span>
+                    </div>
+                    <button (click)="goToDetails(item.id)" class="details-button underlined" type="button" mat-stroked-button>Подробнее</button>
+                </div>
+    
+            </div>
+            <div class="pagination">    
+                <p-paginator [rows]="meta.per_page" [totalRecords]="meta.total" [pageLinkSize]="5" (onPageChange)="paginate($event)"></p-paginator>
+            </div>
         </div>
     </div>
 </div>

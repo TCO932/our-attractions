@@ -7,6 +7,10 @@
   cursor: pointer;
 }
 
+.menu {
+  object-fit: contain;
+}
+
 mat-toolbar { 
   height: 100px;
   // background-color: aqua;
@@ -49,6 +53,7 @@ img {
 
 
 .footer {
+  background-color: #e5e5e5;
   .footer-container {
     p.text {
       cursor: pointer;

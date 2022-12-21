@@ -1,17 +1,19 @@
-<div class="main-container  sm:col-11 md:col-11 lg:col-10 xl:col-9 mx-auto px-2">
-    <div class="map-container">
-        <ymap></ymap>
-    </div>
-    
-    <div class="search-container">
-        <div class="lg:text-4xl md:text-3xl font-semibold">
-            Ищете что-то конкретное?
+<div class="app-main" [ngStyle]="{background: 'url(../../assets/trees-search.png) no-repeat'}">
+    <div class="main-container  sm:col-11 md:col-11 lg:col-10 xl:col-9 mx-auto px-2">
+        <div class="map-container">
+            <ymap></ymap>
         </div>
-        <div class="lg:text-4xl md:text-4xl font-semibold">
-            Воспользуйтесь нашим поиском по всем <br> достопримечательностям.
-        </div>
-        <div class="button-container">
-            <button (click)="goToAttractions()" class="search-button" type="button" mat-stroked-button>ПОИСК</button>
+        
+        <div class="search-container">
+            <div class="lg:text-4xl md:text-3xl font-semibold">
+                Ищете что-то конкретное?
+            </div>
+            <div class="lg:text-4xl md:text-4xl font-semibold">
+                Воспользуйтесь нашим поиском по всем <br> достопримечательностям.
+            </div>
+            <div class="button-container">
+                <button (click)="goToAttractions()" class="search-button" type="button" mat-stroked-button>ПОИСК</button>
+            </div>
         </div>
     </div>
 </div>

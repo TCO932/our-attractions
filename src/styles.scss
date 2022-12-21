@@ -292,8 +292,8 @@ $altTheme: (
 }
 
 .p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
-  background: #e2e2e2 !important;
-  border-color: #e2e2e2 !important;
+  background: #ffffff !important;
+  border-color: #ffffff !important;
   color: #292929 !important;
 }
 
@@ -306,6 +306,15 @@ $altTheme: (
 .p-paginator .p-paginator-pages .p-paginator-page:not(.p-highlight):hover {
   background: #eeeeee !important;
   border-color: transparent;
+}
+
+.p-paginator {
+  background: transparent !important;
+  color: #6c757d;
+  border: solid #e9ecef;
+  border-width: 0;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
 }
 
 body {

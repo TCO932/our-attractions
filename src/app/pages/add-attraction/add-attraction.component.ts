@@ -53,11 +53,6 @@ export class AddAttractionComponent implements OnInit {
     } else {
 
       this.attractionsService.addAttraction(controls.title.value!, controls.description.value!, this.markCoords[0], this.markCoords[1], this.files).subscribe((res: any) => {
-        console.log(res.body)
-        this.messageService.add({
-          severity:'success', 
-          summary:'движ',
-        });
         if (res.body?.attraction_created == 'success' || res.body?.attraction_created == 'wiki_not_found') {
           this.messageService.add({
             severity:'success', 

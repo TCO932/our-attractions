@@ -1,4 +1,12 @@
 :host {
+  .attractions-bg {
+    background-size: 100% 100% !important;
+    background-size: contain !important;
+    object-fit: contain;
+    max-height: 100%;
+    max-width: 100%;
+    background-position: bottom !important;
+  }
   .attractions-container {
     margin-top: 30px;
     .search {

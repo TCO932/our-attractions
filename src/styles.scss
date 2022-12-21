@@ -249,15 +249,19 @@ $altTheme: (
 }
 
 .mdc-button {
-  &:hover:not(.underlined, .icon-btn) {
+  &:hover:not(.underlined, .icon-btn, .special-green-button) {
     cursor: pointer;
     background-color: black;
     color: white !important; 
   }
-  &:active:not(.underlined, .icon-btn) {
+  &:active:not(.underlined, .icon-btn, .special-green-button) {
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0.77);
     color: white !important;
+  }
+  &.special-green-button {
+    background-color: rgb(48, 195, 0) !important;
+    color: white !important; 
   }
   &.underlined:active {
     text-decoration: underline !important;

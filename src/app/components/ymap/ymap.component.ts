@@ -19,33 +19,26 @@ export class YmapComponent implements OnInit, OnChanges {
   @Input() marksOn: boolean = false;
   @Input() movable: boolean = false;
   @Output() markCoordsChange = new EventEmitter<[number, number]>();
+  private mapReady: boolean = false;
   private mark?: any;
   private map: any;
   
   ngOnChanges(changes: SimpleChanges): void {
-    // console.log(changes['markCoords'].currentValue);
-    // const coords = changes['markCoords'].currentValue;
-    // if (this.marksOn && ymaps && coords) {
-    //   this.mark = this.createPlacemark(coords);
-    //   this.getAddress(coords);
-    //   console.log(this.mark);
-    // }
-    // if (this.map) {
-    //   console.log(this.map);
-    //   this.map.geoObjects.add(this.mark);
-    // }
-  }
-
-  checkFlag(flag: boolean) {
-    if(flag === false) {
-      window.setTimeout(this.checkFlag, 100);
+    const coords = changes['markCoords'].currentValue;
+    console.log('changes')
+    if (this.mapReady) {
+      this.mark = this.createPlacemark(this.markCoords!);
+      this.map.geoObjects.add(this.mark);
+      this.getAddress(this.markCoords!);
+      console.log(this.mark)
+      this.map.setCenter(coords, this.zoom);
     }
   }
 
   ngOnInit(){
-    this.checkFlag(!!this.markCoords);
     ymaps.ready().then(() => {
       console.log('map is ready!')
+      this.mapReady = true;
       if (!this.center) {
         this.center = [56.852677, 53.206896];
       }
@@ -58,10 +51,9 @@ export class YmapComponent implements OnInit, OnChanges {
       if (this.marksOn) {
         
         if (this.markCoords) {
-          this.mark = this.createPlacemark(this.markCoords);
+          this.mark = this.createPlacemark(this.markCoords!);
           this.map.geoObjects.add(this.mark);
-          this.getAddress(this.markCoords);
-          console.log(this.mark);
+          this.getAddress(this.markCoords!);
         }
 
         if (this.movable) {

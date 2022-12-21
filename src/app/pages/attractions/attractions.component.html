@@ -30,7 +30,7 @@
             </div>
 
         </div>
-        <div class="pagination">    
+        <div class="pagination" *ngIf="meta">    
             <p-paginator [rows]="meta.per_page" [totalRecords]="meta.total" [pageLinkSize]="5" (onPageChange)="paginate($event)"></p-paginator>
         </div>
     </div>
